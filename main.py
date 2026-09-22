@@ -1,0 +1,9 @@
+# pluto charon system
+
+G = 6.6743*10e-11
+MASS_PLUTO = 1.303*10e22
+MASS_CHARON = 1.586*10e21
+MEAN_SEPARATION = 1.9596*10e7
+ORBITAL_ECCENTRICITY = 0
+
+# locate the barycenter
