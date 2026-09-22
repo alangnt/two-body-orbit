@@ -6,6 +6,15 @@ MASS_CHARON = 1.586*10e21       # (m_b)
 MEAN_SEPARATION = 1.9596*10e7   # (r)
 ORBITAL_ECCENTRICITY = 0        # (e)
 
+def calculate_reduced_mass(m_a, m_b):
+    multiplied_mass = m_a * m_b
+    total_mass = m_a + m_b
+    return multiplied_mass / total_mass
+
+def calculate_combined_gravitational_parameter(m_a, m_b):
+    total_mass = m_a + m_b
+    return G * total_mass
+
 def calculate_distance_to_barycenter(m_a, m_b):
     total_mass = m_a + m_b
     return MEAN_SEPARATION * (m_b / total_mass)
