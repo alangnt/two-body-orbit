@@ -6,6 +6,12 @@ MASS_CHARON = 1.586*10e21       # (m_b)
 MEAN_SEPARATION = 1.9596*10e7   # (r)
 ORBITAL_ECCENTRICITY = 0        # (e)
 
+def calculate_orbital_period(combined_grav_param):
+    return (2 * math.pi) * math.sqrt((MEAN_SEPARATION ** 3) / combined_grav_param)
+
+def calculate_relative_orbital_velocity(combined_grav_param):
+    return math.sqrt(combined_grav_param / MEAN_SEPARATION)
+
 def calculate_reduced_mass(multiplied_mass, total_mass):
     return multiplied_mass / total_mass
 
@@ -24,11 +30,16 @@ def main():
     multiplied_mass = MASS_PLUTO * MASS_CHARON
     
     # locate the barycenter
-    barycenter_a = calculate_distance_to_barycenter(total_mass, MASS_CHARON)
-    barycenter_b = calculate_distance_to_barycenter(total_mass, MASS_PLUTO)
+    barycenter_a = calculate_distance_to_barycenter(total_mass, MASS_CHARON)        # r1
+    barycenter_b = calculate_distance_to_barycenter(total_mass, MASS_PLUTO)         # r2
     
-    combined_grav_param = calculate_combined_gravitational_parameter(total_mass)
-    reduced_mass = calculate_reduced_mass(multiplied_mass, total_mass)
+    combined_grav_param = calculate_combined_gravitational_parameter(total_mass)    # µ(grav)
+    reduced_mass = calculate_reduced_mass(multiplied_mass, total_mass)              # µ
+    
+    # now we calculate the relative orbital velocity
+    # and the relative orbital period
+    orbital_velocity = calculate_relative_orbital_velocity(combined_grav_param)     # v(rel)
+    orbital_period = calculate_orbital_period(combined_grav_param)                  # T
     
     print(math.isclose((barycenter_a + barycenter_b), MEAN_SEPARATION))
     
