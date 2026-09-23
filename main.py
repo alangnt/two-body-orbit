@@ -6,6 +6,9 @@ MASS_CHARON = 1.586*10e21       # (m_b)
 MEAN_SEPARATION = 1.9596*10e7   # (r)
 ORBITAL_ECCENTRICITY = 0        # (e)
 
+def calculate_angular_velocity(orbital_period):
+    return (2 * math.pi) / orbital_period
+
 def calculate_orbital_period(combined_grav_param):
     return (2 * math.pi) * math.sqrt((MEAN_SEPARATION ** 3) / combined_grav_param)
 
@@ -40,6 +43,9 @@ def main():
     # and the relative orbital period
     orbital_velocity = calculate_relative_orbital_velocity(combined_grav_param)     # v(rel)
     orbital_period = calculate_orbital_period(combined_grav_param)                  # T
+    
+    # we can then calculate the angular velocity
+    angular_velocity = calculate_angular_velocity(orbital_period)                   # ω
     
     print(math.isclose((barycenter_a + barycenter_b), MEAN_SEPARATION))
     
