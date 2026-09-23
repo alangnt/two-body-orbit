@@ -54,6 +54,6 @@ def main():
     orbital_speed_a = calculate_orbital_velocity(angular_velocity, barycenter_a)    # v_a
     orbital_speed_b = calculate_orbital_velocity(angular_velocity, barycenter_b)    # v_b
     
-    print(math.isclose((barycenter_a + barycenter_b), MEAN_SEPARATION))
+    print(math.isclose((orbital_speed_a + orbital_speed_b), orbital_velocity))
     
 main()
